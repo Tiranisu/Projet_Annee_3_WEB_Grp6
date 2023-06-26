@@ -1,1 +1,7 @@
 
+[Mon Jun 26 08:00:03.367591 2023] [:error] [pid 5115] [client 185.185.119.35:52574] Authorization of user etu750 to access /Projet_Annee_3_WEB_Grp6/ failed. User not in Required unix groups (etu746 enseignants).
+[Mon Jun 26 08:00:03.367663 2023] [authz_core:error] [pid 5115] [client 185.185.119.35:52574] AH01631: user etu750: authorization failure for "/Projet_Annee_3_WEB_Grp6/": 
+[Mon Jun 26 08:00:16.448572 2023] [authnz_external:error] [pid 6642] [client 185.185.119.35:52577] AuthExtern pwauth [/usr/sbin/pwauth]: Failed (1) for user etu746
+[Mon Jun 26 08:00:16.448672 2023] [auth_basic:error] [pid 6642] [client 185.185.119.35:52577] AH01617: user etu746: authentication failure for "/Projet_Annee_3_WEB_Grp6/": Password Mismatch
+[Mon Jun 26 08:00:23.635761 2023] [:error] [pid 6681] [client 185.185.119.35:52578] Authorization of user etu750 to access /Projet_Annee_3_WEB_Grp6/ failed. User not in Required unix groups (etu746 enseignants).
+[Mon Jun 26 08:00:23.635814 2023] [authz_core:error] [pid 6681] [client 185.185.119.35:52578] AH01631: user etu750: authorization failure for "/Projet_Annee_3_WEB_Grp6/": 

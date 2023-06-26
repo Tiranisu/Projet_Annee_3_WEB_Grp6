@@ -1,4 +1,5 @@
 .bash_history
 .cache
 .gnupg
+error.log
 .gitconfig
