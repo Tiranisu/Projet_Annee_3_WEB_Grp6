@@ -3,30 +3,6 @@
 #------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS comprend CASCADE;
-DROP TABLE IF EXISTS accident CASCADE;
-DROP TABLE IF EXISTS ville CASCADE;
-DROP TABLE IF EXISTS descr_athmo CASCADE;
-DROP TABLE IF EXISTS descr_surface CASCADE;
-DROP TABLE IF EXISTS descr_secu CASCADE;
-DROP TABLE IF EXISTS descr_lum CASCADE;
-DROP TABLE IF EXISTS descr_cat_veh CASCADE;
-DROP TABLE IF EXISTS descr_intersection CASCADE;
-DROP TABLE IF EXISTS descr_agglo CASCADE;
-DROP TABLE IF EXISTS descr_type_col CASCADE;
-DROP TABLE IF EXISTS gravite CASCADE;
-
-
-#------------------------------------------------------------
-# Table: ville
-#------------------------------------------------------------
-CREATE TABLE ville(
-        code_insee Numeric NOT NULL ,
-        nom_ville  Varchar (50) NOT NULL
-	,CONSTRAINT ville_PK PRIMARY KEY (code_insee)
-)ENGINE=InnoDB;
-
-
 #------------------------------------------------------------
 # Table: descr_athmo
 #------------------------------------------------------------
@@ -55,7 +31,7 @@ CREATE TABLE descr_surface(
 
 CREATE TABLE descr_secu(
         id  Numeric NOT NULL ,
-        nom Varchar (100) NOT NULL
+        nom Varchar (50) NOT NULL
 	,CONSTRAINT descr_secu_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -77,7 +53,7 @@ CREATE TABLE descr_lum(
 
 CREATE TABLE descr_cat_veh(
         id  Numeric NOT NULL ,
-        nom Varchar (100) NOT NULL
+        nom Varchar (50) NOT NULL
 	,CONSTRAINT descr_cat_veh_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -147,6 +123,17 @@ CREATE TABLE accident(
 
 
 #------------------------------------------------------------
+# Table: ville
+#------------------------------------------------------------
+
+CREATE TABLE ville(
+        code_insee Numeric NOT NULL ,
+        nom_ville  Varchar (50) NOT NULL
+	,CONSTRAINT ville_PK PRIMARY KEY (code_insee)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: comprend
 #------------------------------------------------------------
 
@@ -159,8 +146,9 @@ CREATE TABLE comprend(
         id_descr_type_col     Numeric NOT NULL ,
         id_descr_secu         Numeric NOT NULL ,
         id_descr_lum          Numeric NOT NULL ,
-        id_descr_surface      Numeric NOT NULL
-	,CONSTRAINT comprend_PK PRIMARY KEY (id,id_descr_cat_veh,id_accident,id_descr_intersection,id_descr_agglo,id_descr_type_col,id_descr_secu,id_descr_lum,id_descr_surface)
+        id_descr_surface      Numeric NOT NULL ,
+        code_insee            Numeric NOT NULL
+	,CONSTRAINT comprend_PK PRIMARY KEY (id,id_descr_cat_veh,id_accident,id_descr_intersection,id_descr_agglo,id_descr_type_col,id_descr_secu,id_descr_lum,id_descr_surface,code_insee)
 
 	,CONSTRAINT comprend_descr_athmo_FK FOREIGN KEY (id) REFERENCES descr_athmo(id)
 	,CONSTRAINT comprend_descr_cat_veh0_FK FOREIGN KEY (id_descr_cat_veh) REFERENCES descr_cat_veh(id)
@@ -171,5 +159,6 @@ CREATE TABLE comprend(
 	,CONSTRAINT comprend_descr_secu5_FK FOREIGN KEY (id_descr_secu) REFERENCES descr_secu(id)
 	,CONSTRAINT comprend_descr_lum6_FK FOREIGN KEY (id_descr_lum) REFERENCES descr_lum(id)
 	,CONSTRAINT comprend_descr_surface7_FK FOREIGN KEY (id_descr_surface) REFERENCES descr_surface(id)
+	,CONSTRAINT comprend_ville8_FK FOREIGN KEY (code_insee) REFERENCES ville(code_insee)
 )ENGINE=InnoDB;
 
