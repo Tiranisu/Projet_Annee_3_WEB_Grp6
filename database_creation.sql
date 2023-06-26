@@ -8,9 +8,9 @@
 #------------------------------------------------------------
 
 CREATE TABLE descr_athmo(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_athmo_PK PRIMARY KEY (id)
+        id_descr_athmo Numeric NOT NULL ,
+        nom            Varchar (50) NOT NULL
+	,CONSTRAINT descr_athmo_PK PRIMARY KEY (id_descr_athmo)
 )ENGINE=InnoDB;
 
 
@@ -19,9 +19,9 @@ CREATE TABLE descr_athmo(
 #------------------------------------------------------------
 
 CREATE TABLE descr_surface(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_surface_PK PRIMARY KEY (id)
+        id_descr_surface Numeric NOT NULL ,
+        nom              Varchar (50) NOT NULL
+	,CONSTRAINT descr_surface_PK PRIMARY KEY (id_descr_surface)
 )ENGINE=InnoDB;
 
 
@@ -30,9 +30,9 @@ CREATE TABLE descr_surface(
 #------------------------------------------------------------
 
 CREATE TABLE descr_secu(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_secu_PK PRIMARY KEY (id)
+        id_descr_secu Numeric NOT NULL ,
+        nom           Varchar (50) NOT NULL
+	,CONSTRAINT descr_secu_PK PRIMARY KEY (id_descr_secu)
 )ENGINE=InnoDB;
 
 
@@ -41,9 +41,9 @@ CREATE TABLE descr_secu(
 #------------------------------------------------------------
 
 CREATE TABLE descr_lum(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_lum_PK PRIMARY KEY (id)
+        id_descr_lum Numeric NOT NULL ,
+        nom          Varchar (50) NOT NULL
+	,CONSTRAINT descr_lum_PK PRIMARY KEY (id_descr_lum)
 )ENGINE=InnoDB;
 
 
@@ -52,9 +52,9 @@ CREATE TABLE descr_lum(
 #------------------------------------------------------------
 
 CREATE TABLE descr_cat_veh(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_cat_veh_PK PRIMARY KEY (id)
+        id_descr_cat_veh Numeric NOT NULL ,
+        nom              Varchar (50) NOT NULL
+	,CONSTRAINT descr_cat_veh_PK PRIMARY KEY (id_descr_cat_veh)
 )ENGINE=InnoDB;
 
 
@@ -63,9 +63,9 @@ CREATE TABLE descr_cat_veh(
 #------------------------------------------------------------
 
 CREATE TABLE descr_intersection(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_intersection_PK PRIMARY KEY (id)
+        id_descr_intersection Numeric NOT NULL ,
+        nom                   Varchar (50) NOT NULL
+	,CONSTRAINT descr_intersection_PK PRIMARY KEY (id_descr_intersection)
 )ENGINE=InnoDB;
 
 
@@ -74,9 +74,9 @@ CREATE TABLE descr_intersection(
 #------------------------------------------------------------
 
 CREATE TABLE descr_agglo(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_agglo_PK PRIMARY KEY (id)
+        id_descr_agglo Numeric NOT NULL ,
+        nom            Varchar (50) NOT NULL
+	,CONSTRAINT descr_agglo_PK PRIMARY KEY (id_descr_agglo)
 )ENGINE=InnoDB;
 
 
@@ -85,9 +85,9 @@ CREATE TABLE descr_agglo(
 #------------------------------------------------------------
 
 CREATE TABLE descr_type_col(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT descr_type_col_PK PRIMARY KEY (id)
+        id_descr_type_col Numeric NOT NULL ,
+        nom               Varchar (50) NOT NULL
+	,CONSTRAINT descr_type_col_PK PRIMARY KEY (id_descr_type_col)
 )ENGINE=InnoDB;
 
 
@@ -96,9 +96,9 @@ CREATE TABLE descr_type_col(
 #------------------------------------------------------------
 
 CREATE TABLE gravite(
-        id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
-	,CONSTRAINT gravite_PK PRIMARY KEY (id)
+        id_gravite Numeric NOT NULL ,
+        nom        Varchar (50) NOT NULL
+	,CONSTRAINT gravite_PK PRIMARY KEY (id_gravite)
 )ENGINE=InnoDB;
 
 
@@ -115,10 +115,10 @@ CREATE TABLE accident(
         longi        Float NOT NULL ,
         lati         Float NOT NULL ,
         added_status Bool NOT NULL ,
-        id           Numeric
+        id_gravite   Numeric
 	,CONSTRAINT accident_PK PRIMARY KEY (id_accident)
 
-	,CONSTRAINT accident_gravite_FK FOREIGN KEY (id) REFERENCES gravite(id)
+	,CONSTRAINT accident_gravite_FK FOREIGN KEY (id_gravite) REFERENCES gravite(id_gravite)
 )ENGINE=InnoDB;
 
 
@@ -138,7 +138,7 @@ CREATE TABLE ville(
 #------------------------------------------------------------
 
 CREATE TABLE comprend(
-        id                    Numeric NOT NULL ,
+        id_descr_athmo        Numeric NOT NULL ,
         id_descr_cat_veh      Numeric NOT NULL ,
         id_accident           Int NOT NULL ,
         id_descr_intersection Numeric NOT NULL ,
@@ -148,17 +148,17 @@ CREATE TABLE comprend(
         id_descr_lum          Numeric NOT NULL ,
         id_descr_surface      Numeric NOT NULL ,
         code_insee            Numeric NOT NULL
-	,CONSTRAINT comprend_PK PRIMARY KEY (id,id_descr_cat_veh,id_accident,id_descr_intersection,id_descr_agglo,id_descr_type_col,id_descr_secu,id_descr_lum,id_descr_surface,code_insee)
+	,CONSTRAINT comprend_PK PRIMARY KEY (id_descr_athmo,id_descr_cat_veh,id_accident,id_descr_intersection,id_descr_agglo,id_descr_type_col,id_descr_secu,id_descr_lum,id_descr_surface,code_insee)
 
-	,CONSTRAINT comprend_descr_athmo_FK FOREIGN KEY (id) REFERENCES descr_athmo(id)
-	,CONSTRAINT comprend_descr_cat_veh0_FK FOREIGN KEY (id_descr_cat_veh) REFERENCES descr_cat_veh(id)
+	,CONSTRAINT comprend_descr_athmo_FK FOREIGN KEY (id_descr_athmo) REFERENCES descr_athmo(id_descr_athmo)
+	,CONSTRAINT comprend_descr_cat_veh0_FK FOREIGN KEY (id_descr_cat_veh) REFERENCES descr_cat_veh(id_descr_cat_veh)
 	,CONSTRAINT comprend_accident1_FK FOREIGN KEY (id_accident) REFERENCES accident(id_accident)
-	,CONSTRAINT comprend_descr_intersection2_FK FOREIGN KEY (id_descr_intersection) REFERENCES descr_intersection(id)
-	,CONSTRAINT comprend_descr_agglo3_FK FOREIGN KEY (id_descr_agglo) REFERENCES descr_agglo(id)
-	,CONSTRAINT comprend_descr_type_col4_FK FOREIGN KEY (id_descr_type_col) REFERENCES descr_type_col(id)
-	,CONSTRAINT comprend_descr_secu5_FK FOREIGN KEY (id_descr_secu) REFERENCES descr_secu(id)
-	,CONSTRAINT comprend_descr_lum6_FK FOREIGN KEY (id_descr_lum) REFERENCES descr_lum(id)
-	,CONSTRAINT comprend_descr_surface7_FK FOREIGN KEY (id_descr_surface) REFERENCES descr_surface(id)
+	,CONSTRAINT comprend_descr_intersection2_FK FOREIGN KEY (id_descr_intersection) REFERENCES descr_intersection(id_descr_intersection)
+	,CONSTRAINT comprend_descr_agglo3_FK FOREIGN KEY (id_descr_agglo) REFERENCES descr_agglo(id_descr_agglo)
+	,CONSTRAINT comprend_descr_type_col4_FK FOREIGN KEY (id_descr_type_col) REFERENCES descr_type_col(id_descr_type_col)
+	,CONSTRAINT comprend_descr_secu5_FK FOREIGN KEY (id_descr_secu) REFERENCES descr_secu(id_descr_secu)
+	,CONSTRAINT comprend_descr_lum6_FK FOREIGN KEY (id_descr_lum) REFERENCES descr_lum(id_descr_lum)
+	,CONSTRAINT comprend_descr_surface7_FK FOREIGN KEY (id_descr_surface) REFERENCES descr_surface(id_descr_surface)
 	,CONSTRAINT comprend_ville8_FK FOREIGN KEY (code_insee) REFERENCES ville(code_insee)
 )ENGINE=InnoDB;
 
