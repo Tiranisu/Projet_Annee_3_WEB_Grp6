@@ -2,6 +2,9 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+
+DROP TABLE IF EXISTS comprend CASCADE;
+DROP TABLE IF EXISTS accident CASCADE;
 DROP TABLE IF EXISTS descr_athmo CASCADE;
 DROP TABLE IF EXISTS descr_surface CASCADE;
 DROP TABLE IF EXISTS descr_secu CASCADE;
@@ -11,8 +14,8 @@ DROP TABLE IF EXISTS descr_intersection CASCADE;
 DROP TABLE IF EXISTS descr_agglo CASCADE;
 DROP TABLE IF EXISTS descr_type_col CASCADE;
 DROP TABLE IF EXISTS gravite CASCADE;
-DROP TABLE IF EXISTS accident CASCADE;
-DROP TABLE IF EXISTS comprend CASCADE;
+
+
 
 
 #------------------------------------------------------------
