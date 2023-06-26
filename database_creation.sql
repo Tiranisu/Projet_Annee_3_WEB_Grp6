@@ -5,6 +5,7 @@
 
 DROP TABLE IF EXISTS comprend CASCADE;
 DROP TABLE IF EXISTS accident CASCADE;
+DROP TABLE IF EXISTS ville CASCADE;
 DROP TABLE IF EXISTS descr_athmo CASCADE;
 DROP TABLE IF EXISTS descr_surface CASCADE;
 DROP TABLE IF EXISTS descr_secu CASCADE;
@@ -16,6 +17,14 @@ DROP TABLE IF EXISTS descr_type_col CASCADE;
 DROP TABLE IF EXISTS gravite CASCADE;
 
 
+#------------------------------------------------------------
+# Table: ville
+#------------------------------------------------------------
+CREATE TABLE ville(
+        code_insee Numeric NOT NULL ,
+        nom_ville  Varchar (50) NOT NULL
+	,CONSTRAINT ville_PK PRIMARY KEY (code_insee)
+)ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
@@ -46,7 +55,7 @@ CREATE TABLE descr_surface(
 
 CREATE TABLE descr_secu(
         id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
+        nom Varchar (100) NOT NULL
 	,CONSTRAINT descr_secu_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -68,7 +77,7 @@ CREATE TABLE descr_lum(
 
 CREATE TABLE descr_cat_veh(
         id  Numeric NOT NULL ,
-        nom Varchar (50) NOT NULL
+        nom Varchar (100) NOT NULL
 	,CONSTRAINT descr_cat_veh_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -163,5 +172,4 @@ CREATE TABLE comprend(
 	,CONSTRAINT comprend_descr_lum6_FK FOREIGN KEY (id_descr_lum) REFERENCES descr_lum(id)
 	,CONSTRAINT comprend_descr_surface7_FK FOREIGN KEY (id_descr_surface) REFERENCES descr_surface(id)
 )ENGINE=InnoDB;
-
 
