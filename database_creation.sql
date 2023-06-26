@@ -43,7 +43,7 @@ CREATE TABLE descr_surface(
 
 CREATE TABLE descr_secu(
         id_descr_secu Numeric NOT NULL ,
-        nom           Varchar (50) NOT NULL
+        nom           Varchar (100) NOT NULL
 	,CONSTRAINT descr_secu_PK PRIMARY KEY (id_descr_secu)
 )ENGINE=InnoDB;
 
@@ -65,7 +65,7 @@ CREATE TABLE descr_lum(
 
 CREATE TABLE descr_cat_veh(
         id_descr_cat_veh Numeric NOT NULL ,
-        nom              Varchar (50) NOT NULL
+        nom              Varchar (100) NOT NULL
 	,CONSTRAINT descr_cat_veh_PK PRIMARY KEY (id_descr_cat_veh)
 )ENGINE=InnoDB;
 
