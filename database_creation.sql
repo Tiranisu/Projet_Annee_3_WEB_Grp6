@@ -146,7 +146,7 @@ CREATE TABLE accident(
         id_descr_intersection Numeric NOT NULL ,
         id_descr_agglo        Numeric NOT NULL ,
         id_descr_cat_veh      Numeric NOT NULL ,
-        code_insee            Numeric NOT NULL ,
+        code_insee            Varchar (5) NOT NULL ,
         id_descr_athmo        Numeric NOT NULL
 	,CONSTRAINT accident_PK PRIMARY KEY (id_accident)
 
