@@ -7,6 +7,10 @@ function printtest(infos){
 }
 
 
+function envoyerAjout(){
+    
+}
+
 document.getElementById("monBouton").addEventListener("click", function() {
     // Code à exécuter lorsque le bouton est cliqué
     console.log("Le bouton a été cliqué !");
