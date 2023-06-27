@@ -119,7 +119,7 @@ CREATE TABLE gravite(
 #------------------------------------------------------------
 
 CREATE TABLE ville(
-        code_insee Numeric NOT NULL ,
+        code_insee Varchar (5)  NOT NULL ,
         nom_ville  Varchar (50) NOT NULL
 	,CONSTRAINT ville_PK PRIMARY KEY (code_insee)
 )ENGINE=InnoDB;
