@@ -5,3 +5,7 @@ error.log
 .gitconfig
 .mysql_history
 .python_history
+.local/
+.viminfo
+.output.json
+.vim/
