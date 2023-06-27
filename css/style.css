@@ -1,25 +1,165 @@
-/**
-Author: Prenom NOM
-Login : etuXXX
-Groupe: ISEN X GROUPE Y
-Annee:
-*/
+body {
+    height: 100vh;
+    margin: 0;
+}
 
-/* Body */
+#bloc_page {
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
 
-/* Header level 1 */
+/*TABLEAU DANS LA PAGE VISUALISATION*/
+::-webkit-scrollbar{
+    width: 15px;
+}
 
-/* Header level 2 */
+::-webkit-scrollbar-track{
+    background: #f0cbcb;
+}
 
-/* section */
+::-webkit-scrollbar-thumb{
+    background: #54e7e9;
+}
 
-/* Table */
+/*HEADER*/
+#header {
+    display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background:#99e6ff;
+    height: 12%;
+    top:0%;
+    left: 0%;
+    right: 0%;
+}
 
-/* Forms */
+#img_logo_header {
+    height: 80px;
+}
 
-/* Header and footer */
+.text_header {
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+}
 
-/* Authentication */
+#text_header_accueil {
+    text-decoration:none; 
+    color:#ffffff
+}
 
-/* Chat */
+#text_header_visualisation {
+    text-decoration:none;
+     color:#ffffff
+}
 
+#text_header_ajout {
+    text-decoration:none; 
+    color:#ffffff
+}
+
+/*FOOTER*/
+#footer {
+    display: flex;
+	flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background:#ff9999;
+    height: 12%;
+    bottom:0%;
+    left: 0%;
+    right: 0%; 
+}
+
+#col_foot_1 {
+    display: flex;
+	flex-direction: column;
+}
+
+#col_foot_1 {
+    display: flex;
+	flex-direction: column;
+}
+
+#img_logo_isen {
+    height: 80px;
+}
+
+.text_footer {
+    color: white;
+    font-size: xxx-large;
+    font-weight: bold;
+}
+
+.text_footer_nom {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+/*ACCUEIL*/
+#presentation {
+    display: flex;
+	flex-direction: row;
+}
+
+#presentation_texte {
+    width: 40%;
+}
+
+/*AJOUT*/
+#ajout {
+    display: flex;
+	flex-direction: column;
+}
+
+#form {
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#labels {
+    display: flex;
+	flex-direction: column;
+}
+
+#inputs {
+    display: flex;
+	flex-direction: column;
+}
+
+.champ_form {
+    display: flex;
+	flex-direction: row;
+    padding-bottom: 5px;
+}
+
+.champ_label {
+    display: flex;
+	flex-direction: row;
+}
+
+.champ_ajout {
+    display: flex;
+	flex-direction: row;
+}
+
+#titre_ajout {
+    text-align: center;
+    color: #ff9999;
+}
+
+.form_labels {
+    display: flex;
+	flex-direction: row;
+}
+
+#button_form {
+    width: 20%;
+    background-color: #ff9999;
+}
