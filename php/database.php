@@ -1,4 +1,5 @@
 <?php
+
 require_once("constants.php");
 function dbConnect()
   {
@@ -21,7 +22,6 @@ function get_all_crashed($db){
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
-
 
 
 ?>
