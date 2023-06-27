@@ -5,6 +5,9 @@
     <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+    <script src="js/utils.js" charset="utf-8"></script> 
+    <script src="js/kmeans.js" charset="utf-8"></script>
+    <script src="js/mapCluster.js" charset="utf-8" defer></script>
     <meta charset="UTF-8">
   </head>
   <body>
@@ -36,39 +39,3 @@
   </body>
 </html>
 
-<!--EXEMPLE POUR MAP-->
-<script>
-  const latitudes = [48.8566, 43.7102, 47.2184]; // Exemple de latitudes pour Paris, Marseille et Lyon
-  const longitudes = [2.3522, 7.2620, 5.9795]; // Exemple de longitudes pour Paris, Marseille et Lyon
-  const data = [{
-    type: 'scattergeo',
-    lat: latitudes,
-    lon: longitudes,
-    mode: 'markers',
-    marker: {
-      size: [1, 1 , 1], // Exemple de taille de bulle pour les trois localisations
-      sizemode: 'diameter',
-      sizeref: 0.1,
-      color: 'blue'
-    }
-  }];
-  const layout = {
-    title: 'Bubble Map de la France',
-    showlegend: false,
-    geo: {
-      lataxis: { range: [41, 51] }, // Latitude range for France
-      lonaxis: { range: [-5, 10] }, // Longitude range for France
-      resolution:50,
-      showcountries: true,
-      countrycolor: 'gray',
-      showsubunits: true,
-      subunitcolor: 'blue',
-      subunitwidth: 1.5
-      }
-  };
-
-  const config = {
-    responsive: true
-  };
-  Plotly.newPlot('div_map', data, layout, config);
-</script>
