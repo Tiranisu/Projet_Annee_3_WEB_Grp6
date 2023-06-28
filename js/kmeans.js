@@ -1,7 +1,8 @@
 function test(data)
 {
-    console.log(data);
-	console.log(data[0]);
+	console.log(data);
+	jdata = data.data;
+	console.log(jdata.map(row => row[0]));
 }
 
 ajaxRequest("GET", "php/kmeans.php", test);

@@ -39,7 +39,7 @@ a = F2_Preparation_Data_Pour_Classification(data,data.shape[0])
 data = data.assign(cluster = F2_Affichage_kMeans_Auto(a, 13))
 
 #json_data = data.to_json(orient='records')
-json_data = data.to_json(orient='records')
+json_data = data.to_json(orient='split')
 
 # Affichage du JSON
 
