@@ -185,9 +185,9 @@ function afficherDescr_agglo(infos){
 }
 
 function endLoading(){
-    console.log("Load")
+    console.log("Loaded !")
     document.getElementById('bloc_page').style.display = 'flex';
-    document.getElementById('loader').style.display = 'none';
+    document.getElementById('main_loader').style.display = 'none';
 }
 
 
