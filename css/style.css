@@ -10,19 +10,6 @@ body {
     min-height: 100%;
 }
 
-/*TABLEAU DANS LA PAGE VISUALISATION*/
-::-webkit-scrollbar{
-    width: 15px;
-}
-
-::-webkit-scrollbar-track{
-    background: #f0cbcb;
-}
-
-::-webkit-scrollbar-thumb{
-    background: #54e7e9;
-}
-
 /*HEADER*/
 #header {
     display: flex;
@@ -101,17 +88,40 @@ body {
 }
 
 /*ACCUEIL*/
-#presentation {
+#acceuil_corps {
+    display: flex;
+	flex-direction: column;
+}
+
+#presentation_groupe {
     display: flex;
 	flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#presentation_image {
+    width: 30vw;
 }
 
 #presentation_texte {
     width: 40%;
 }
 
+#presentation_projet {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 /*VISUALISATION*/
 #div_style_map_visu {
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+#loading {
     display: flex;
 	flex-direction: column;
     align-items: center;
@@ -162,7 +172,7 @@ body {
 	flex-direction: row;
 }
 
-#titre_ajout {
+h2 {
     text-align: center;
     color: #ff9999;
 }

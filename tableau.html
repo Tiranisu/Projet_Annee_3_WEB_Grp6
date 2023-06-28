@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/mapbox-gl@latest/dist/mapbox-gl.js"></script>
     <script src="js/utils.js" charset="utf-8"></script> 
     <script src="js/visualisation.js" charset="utf-8"></script>
-    <script src="js/mapCluster.js" charset="utf-8" defer></script>
     <meta charset="UTF-8">
   </head>
   <body>
@@ -21,15 +20,18 @@
         <div class="text_header"><a id="text_header_ajout" href="ajout.html">Ajout d'accident</a></div>
       </div>
 
+      <div id="loading" class="loading-div">
+        <!-- Contenu de la div de chargement -->
+        <h2>BOUGE PAS !</h2>
+      </div>
+
       <div id="div_style_map_visu">
         <div id="div_map_tableau"></div>
-      
-
         <div id="boutons_visu">
           <input type="button" value="Clusters" onclick="location.href='clusters.html';">
           <input type="button" value="Prédire">
         </div>
-      </div>
+      </div> 
 
       <!--FOOTER-->
       <div id="footer">

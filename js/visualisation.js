@@ -1,5 +1,15 @@
 function test(data)
 {
+    var loadingDiv = document.getElementById('loading');
+    var mainDiv = document.getElementById('div_style_map_visu');
+    mainDiv.style.display = 'none';
+    loadingDiv.style.display = 'flex';
+
+    /*var maDiv = document.getElementById('div_style_map_visu');
+    var nouveauSpan = document.createElement('span');
+    nouveauSpan.innerText = '<img src="img/LOGO_BlaBla_Crash.png">';
+    maDiv.appendChild(nouveauSpan);*/
+
 	jdata = data.data;
     let tab_lat = jdata.map(row => row[0]);
     let tab_lon = jdata.map(row => row[1]);
@@ -25,8 +35,13 @@ function test(data)
         margin: { l: 0, r: 0, t: 0, b: 0 },
         showlegend: false
     };
+
+
     // Création de la carte
     Plotly.newPlot('div_map_tableau', data, layout);
+
+    loadingDiv.style.display = 'none';
+    mainDiv.style.display = 'flex';
 }
 
 ajaxRequest("GET", "php/kmeans.php", test);

@@ -1,5 +1,8 @@
 function test(data)
 {
+    var loadingDiv = document.getElementById('loading');
+    loadingDiv.style.display = 'flex';
+
     //console.log(data);
 	//console.log(data[0]);
     //console.log(data[1]['lati']);
@@ -8,7 +11,7 @@ function test(data)
 
     let tab_lat = jdata.map(row => row[0]);
     let tab_lon = jdata.map(row => row[1]);
-    let tab_cluster = jdata.map(row => row[2])/*.toString()*/;
+    let tab_cluster = jdata.map(row => row[2]);
 
     //console.log(tab_lon)
 
@@ -36,6 +39,10 @@ function test(data)
     };
     // Création de la carte
     Plotly.newPlot('div_style_map_clusters', data, layout);
+
+    loadingDiv.style.display = 'none';
+    var mainDiv = document.getElementById('div_style_map_visu');
+    mainDiv.style.display = 'flex';
 }
 
 ajaxRequest("GET", "php/kmeans.php", test);
