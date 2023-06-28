@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>BlaBla Crash - Clusters</title>
+    <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/mapbox-gl@latest/dist/mapbox-gl.js"></script>
+    <script src="js/utils.js" charset="utf-8"></script> 
+    <script src="js/kmeans.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+
+    <div id="bloc_page">
+
+      <!-- HEADER -->
+      <div id="header">
+        <div id="logo_header"><img id="img_logo_header" src="img/LOGO_BlaBla_Crash.png"></div>
+        <div class="text_header"><a id="text_header_accueil" href="index.html">Accueil</a></div>
+        <div class="text_header"><a id="text_header_visualisation" href="tableau.html">Visualisation</a></div>
+        <div class="text_header"><a id="text_header_ajout" href="ajout.html">Ajout d'accident</a></div>
+      </div>
+
+      <!-- DIV DE CHARGEMENT -->
+      <div id="loading" class="loading-div">
+        <h2>CA VA PRENDRE QUELQUES SECONDES</h2>
+      </div>
+
+      <!-- DIV CARTE DES CLUSTERS -->
+      <div id="div_style_map_clusters">
+        <div id="div_map_tableau"></div>
+      </div>
+
+      <!--FOOTER-->
+      <div id="footer">
+        <div class="text_footer"><a id="text_footer_groupe">Groupe 6</a></div>
+        <div id="col_foot_1">
+          <div class="text_footer_nom"><a id="text_footer_antonin">Antonin Sabiron</a></div>
+          <div class="text_footer_nom"><a id="text_footer_teo">Téo Rortais</a></div>
+        </div>
+        <div id="col_foot_2">
+          <div class="text_footer_nom"><a id="text_footer_dorian">Dorian Tarin</a></div>
+          <div class="text_footer_nom"><a id="text_footer_mael">Maël Grellier Neau</a></div>
+        </div>
+        <div id="logo_isen"><img id="img_logo_isen" src="img/ISEN_blanc.png"></div>
+      </div>
+      
+    </div>
+
+  </body>
+</html>
