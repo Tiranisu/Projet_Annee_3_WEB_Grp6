@@ -144,7 +144,7 @@ CREATE TABLE accident(
         id_descr_secu         Numeric NOT NULL ,
         id_descr_type_col     Numeric NOT NULL ,
         id_descr_intersection Numeric NOT NULL ,
-        added_status        Numeric NOT NULL ,
+        id_descr_agglo        Numeric NOT NULL ,
         id_descr_cat_veh      Numeric NOT NULL ,
         code_insee            Varchar (5) NOT NULL ,
         id_descr_athmo        Numeric NOT NULL
@@ -161,4 +161,3 @@ CREATE TABLE accident(
 	,CONSTRAINT accident_ville7_FK FOREIGN KEY (code_insee) REFERENCES ville(code_insee)
 	,CONSTRAINT accident_descr_athmo8_FK FOREIGN KEY (id_descr_athmo) REFERENCES descr_athmo(id_descr_athmo)
 )ENGINE=InnoDB;
-

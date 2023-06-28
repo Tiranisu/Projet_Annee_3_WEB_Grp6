@@ -114,4 +114,4 @@ INSERT INTO gravite(id_gravite,nom_gravite) VALUES (0,"Indemne");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (1,"Blessé léger");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (2,"Blessé hospitalisé");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (3,"Tué");
-INSERT INTO gravite(id_gravite,nom) VALUES (4,"NDF");
+INSERT INTO gravite(id_gravite,nom_gravite) VALUES (4,"NDF");
