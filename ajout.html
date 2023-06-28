@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="fr">
   <head>
+    <meta charset="UTF-8">
     <title>BlaBla Crash - Ajout</title>
     <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
-
     <link href="https://fonts.cdnfonts.com/css/bukhari-script" rel="stylesheet">
-    <link rel="stylesheet" href="css/ajout.css" type="text/css" media="screen" />
     
     <script type="text/javascript" src="/js/ajout_accident.js"></script>
     <meta charset="UTF-8">
@@ -42,50 +41,67 @@
             <label class="form_labels" for="form_age" form="form_ajout">Age du conducteur : </label>
             <input type="number" id="form_age" name="form_age"></select>
           </div>
+
           <div class="champ_form" id="date">
             <label class="form_labels" for="form_date" form="form_ajout">Date et heure de l'accident : </label>
             <input type="datetime-local" id="form_date" name="form_date"></select>
           </div>
+          
           <div class="champ_form" id="ville">
             <label class="form_labels" for="form_ville" form="form_ajout">Ville : </label>
-            <input type="text" id="form_ville" name="form_ville"></select>
+            <select type="text" id="form_ville" name="form_ville"></select>
           </div>
+
           <div class="champ_form" id="latitude">
             <label class="form_labels" for="form_latitude" form="form_ajout">Latitude : </label>
             <input type="number" id="form_latitude" name="form_latitude"></select>
           </div>
+
           <div class="champ_form" id="longitude">
             <label class="form_labels" for="form_longitude" form="form_ajout">Longitude : </label>
             <input type="number" id="form_longitude" name="form_longitude"></select>
           </div>
+
           <div class="champ_form" id="athmo">
             <label class="form_labels" for="form_athmo">Condition athmosphérique : </label>
             <select name="form_athmo" id="form_athmo" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="lum">
             <label class="form_labels" for="form_lum">Luminositée de la scène : </label>
             <select name="form_lum" id="form_lum" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="route">
             <label class="form_labels" for="form_route">Etat de la route : </label>
             <select name="form_route" id="form_route" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="secu">
             <label class="form_labels" for="form_secu">Etat d’utilisataion de la ceinture de sécuritée : </label>
             <select name="form_secu" id="form_secu" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="colision">
             <label class="form_labels" for="form_colision">Colision : </label>
             <select name="form_colision" id="form_colision" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="intersection">
             <label class="form_labels" for="form_intersection">Intersection : </label>
             <select name="form_intersection" id="form_intersection" form="form_ajout"></select>
           </div>
+
           <div class="champ_form" id="categorie">
             <label class="form_labels" for="form_categorie">Categorie : </label>
-            <select list="autocomplete-list" name="form_categorie" id="form_categorie" form="form_ajout"></select>
+            <select type list="autocomplete-list" name="form_categorie" id="form_categorie" form="form_ajout"></select>
           </div>
+
+          <div class="champ_form" id="categorie">
+            <label class="form_labels" for="form_agglo">Agglomération : </label>
+            <select list="autocomplete-list" name="form_agglo" id="form_agglo" form="form_ajout"></select>
+          </div>
+  
           <input id="button_form" type="submit" value="Ajouter" form="form_ajout" onclick="envoyerAjout()">
         </div>
       </div>
