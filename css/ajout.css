@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: linear-gradient(to top left, #ff9999 0%, #54e7e9 100%); */
+}
+
+#bloc_page{
+    display: none;
+}
+
+.loader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 30px 30px 30px;
+    border-radius: 15px;
+    background-color: #fac6c6;
+    animation: breath 2s infinite;
+}
+
+.animation{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.ball{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: #85eef0b7;
+    animation: bounce 1s infinite;
+}
+
+.text_loader{
+    font-family: 'Bukhari Script', sans-serif;
+}
+
+.ball:not(:last-child){
+    margin-right: 10px;
+}
+
+.ball:nth-child(2){
+    animation-delay: 0.1s;
+}
+
+.ball:nth-child(3){
+    animation-delay: 0.2s;
+}
+
+@keyframes breath{
+    0%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}
+
+
+@keyframes bounce{
+    0%{
+        transform: translateY(-100%);
+    }
+    50%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}

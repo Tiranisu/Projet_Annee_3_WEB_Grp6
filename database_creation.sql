@@ -161,4 +161,3 @@ CREATE TABLE accident(
 	,CONSTRAINT accident_ville7_FK FOREIGN KEY (code_insee) REFERENCES ville(code_insee)
 	,CONSTRAINT accident_descr_athmo8_FK FOREIGN KEY (id_descr_athmo) REFERENCES descr_athmo(id_descr_athmo)
 )ENGINE=InnoDB;
-

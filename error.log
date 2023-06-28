@@ -213,3 +213,4 @@
 [Wed Jun 28 06:42:56.403366 2023] [php7:emerg] [pid 28100] [client 185.185.119.35:6943] PHP Parse error:  syntax error, unexpected 'header' (T_STRING) in /var/www/etu746/php/kmeans.php on line 11, referer: http://etu746.projets.isen-ouest.fr/tableau.html
 [Wed Jun 28 06:43:09.754985 2023] [php7:emerg] [pid 31278] [client 185.185.119.35:6952] PHP Parse error:  syntax error, unexpected 'header' (T_STRING) in /var/www/etu746/php/kmeans.php on line 11, referer: http://etu746.projets.isen-ouest.fr/tableau.html
 [Wed Jun 28 06:43:22.307545 2023] [php7:emerg] [pid 1599] [client 185.185.119.35:6960] PHP Parse error:  syntax error, unexpected 'header' (T_STRING) in /var/www/etu746/php/kmeans.php on line 11, referer: http://etu746.projets.isen-ouest.fr/tableau.html
+
