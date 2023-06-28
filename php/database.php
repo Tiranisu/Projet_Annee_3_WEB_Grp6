@@ -179,6 +179,19 @@ function get_all_crashs($db){
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
-?>
+
+
+function get_predict($db, $id){
+try{
+    $request = 'SELECT age,date, nom_cat_veh, nom_agglo,nom_athmo,nom_intersection,nom_secu,nom_type_col FROM accident,descr_athmo,descr_secu,descr_cat_veh,descr_agglo,descr_intersection,descr_type_col WHERE accident.id_descr_intersection = descr_intersection.id_descr_intersection AND accident.id_descr_type_col = descr_type_col.id_descr_type_col AND accident.id_descr_agglo = descr_agglo.id_descr_agglo and accident.id_descr_athmo=descr_athmo.id_descr_athmo AND accident.id_descr_secu=descr_secu.id_descr_secu AND accident.id_descr_cat_veh = descr_cat_veh.id_descr_cat_veh and id_accident = 70000';
+    $statement = $db->prepare($request);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+}
+catch(PDOException $e){
+    return false;
+}
+}
 
 

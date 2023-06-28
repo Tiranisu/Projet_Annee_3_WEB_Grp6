@@ -36,13 +36,20 @@ if($requestMethod == "GET"){
         $data = json_decode($json);
         exec("rm output.json");
     }
+    $a = 10;
     if($requestRessource=="knn"){
             #on lance le python
-        #exec("python ../cgi/knn.py ../export 10 2 1 1 1 14 2 2 10");
-        exec('python ../cgi/knn.py ../export $_GET["age"] $_GET["date"] $_GET["descr_cat_veh"] $_GET["descr_agglo"] $_GET["descr_athmo"] $_GET["description_intersection"] $_GET["descr_dispo_secu"] $_GET["descr_type_col"]');
+        $temp = get_predict($db, $id);
+        #exec('python ../cgi/knn.py ../export '.$temp[0]['age'].' '. $temp[0]['date'].' '. $temp[0]['nom_cat_veh'].' '. $temp[0]['nom_agglo'].' '. $temp[0]['nom_athmo'].' '. $temp[0]['nom_intersection'].' '. $temp[0]['nom_secu'].' '.$temp[0]['nom_type_col']);
+	#exec("python ../cgi/knn.py ../export 10 2 1 1 1 14 2 2 10");
+	$temp[0]['date'] = 2;
+        exec('python ../cgi/knn.py ../export '. $temp[0]['age'] . ' ' . $temp[0]['date'] .' 10 2 1 1 1 14 2 2 10');
         #on recupere le json depuis un fichier temp
         $json = file_get_contents("knn.json");
         exec("rm knn.json");
+        #$data = json_decode($json);
+        $data = $json;
+        
     }
 }
 

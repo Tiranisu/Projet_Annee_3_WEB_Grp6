@@ -44,4 +44,4 @@ function test(data)
     mainDiv.style.display = 'flex';
 }
 
-ajaxRequest("GET", "php/kmeans.php", test);
+ajaxRequest("GET", "php/predict.php/kmeans", test);
