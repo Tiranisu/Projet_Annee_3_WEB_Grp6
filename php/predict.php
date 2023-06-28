@@ -39,7 +39,7 @@ if($requestMethod == "GET"){
     if($requestRessource=="knn"){
             #on lance le python
         #exec("python ../cgi/knn.py ../export 10 2 1 1 1 14 2 2 10");
-        exec("python ../cgi/knn.py ../export $_GET["age"] $_GET["date"] $_GET["descr_cat_veh"] $_GET["descr_agglo"] $_GET["descr_athmo"] $_GET["description_intersection"] $_GET["descr_dispo_secu"] $_GET["descr_type_col"]");
+        exec('python ../cgi/knn.py ../export $_GET["age"] $_GET["date"] $_GET["descr_cat_veh"] $_GET["descr_agglo"] $_GET["descr_athmo"] $_GET["description_intersection"] $_GET["descr_dispo_secu"] $_GET["descr_type_col"]');
         #on recupere le json depuis un fichier temp
         $json = file_get_contents("knn.json");
         exec("rm knn.json");
