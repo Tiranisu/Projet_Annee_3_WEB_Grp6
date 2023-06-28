@@ -44,7 +44,8 @@ data = data.assign(cluster = F2_Affichage_kMeans_Auto(a, 13))
 
 #pd.set_option('display.max_rows', None)
 
-json_data = data.to_json(orient='records')
+#json_data = data.to_json(orient='records')
+json_data = data.to_json(orient='split')
 
 # Affichage du JSON
 

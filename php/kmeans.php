@@ -1,7 +1,8 @@
 <?php 
 
 #on lance le python
-exec("python ../cgi/kmeans.py");
+#exec("python ../cgi/kmeans.py", $t);
+exec("ls -la ../cgi/kmeans.py", $a);
 
 #on recupere le json depuis un fichier temp
 $json = file_get_contents("../output.json");
@@ -11,5 +12,6 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-control: no-store, no-cache, must-revalidate');
 header('Pragma: no-cache');
 header('HTTP/1.1 200 OK');
-echo $json;
+#echo $json;
+echo json_encode($a);
 exit;
