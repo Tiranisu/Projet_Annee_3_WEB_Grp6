@@ -35,6 +35,7 @@ query = "SELECT lati, longi FROM accident;"
 data = pd.read_sql(query, con=mydatabase)
 a = F2_Preparation_Data_Pour_Classification(data,data.shape[0])
 
+
 #ajout d'une colonne contenant le cluster d'appartenance
 data = data.assign(cluster = F2_Affichage_kMeans_Auto(a, 13))
 

@@ -1,27 +1,18 @@
 function test(data)
 {
-    //console.log(data);
-	//console.log(data[0]);
-    //console.log(data[1]['lati']);
 	jdata = data.data;
-	//console.log(jdata.map(row => row[0]));
-
     let tab_lat = jdata.map(row => row[0]);
     let tab_lon = jdata.map(row => row[1]);
-    let tab_cluster = jdata.map(row => row[2])/*.toString()*/;
-
-    //console.log(tab_lon)
-
-    
-    // Données géographiques
+   
+    // MAP
     var data = [{
         type: 'scattermapbox',
         lat: tab_lat, // Tableau des latitudes
         lon: tab_lon, // Tableau des longitudes
         mode: 'markers',
         marker: {
-            size: 8,
-            color: tab_cluster
+            size: 5,
+            color: '#99E6FF'
         }
     }];
     // Configuration de la carte
@@ -35,7 +26,7 @@ function test(data)
         showlegend: false
     };
     // Création de la carte
-    Plotly.newPlot('div_style_map_clusters', data, layout);
+    Plotly.newPlot('div_map_tableau', data, layout);
 }
 
 ajaxRequest("GET", "php/kmeans.php", test);

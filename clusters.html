@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <title>BlaBla Crash - Visualisation</title>
+    <title>BlaBla Crash - Clusters</title>
     <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
     <script src="https://unpkg.com/mapbox-gl@latest/dist/mapbox-gl.js"></script>
     <script src="js/utils.js" charset="utf-8"></script> 
-    <script src="js/visualisation.js" charset="utf-8"></script>
+    <script src="js/kmeans.js" charset="utf-8"></script>
     <script src="js/mapCluster.js" charset="utf-8" defer></script>
     <meta charset="UTF-8">
   </head>
   <body>
+
     <div id="bloc_page">
       <!--HEADER-->
       <div id="header">
@@ -21,14 +22,8 @@
         <div class="text_header"><a id="text_header_ajout" href="ajout.html">Ajout d'accident</a></div>
       </div>
 
-      <div id="div_style_map_visu">
+      <div id="div_style_map_clusters">
         <div id="div_map_tableau"></div>
-      
-
-        <div id="boutons_visu">
-          <input type="button" value="Clusters" onclick="location.href='clusters.html';">
-          <input type="button" value="Prédire">
-        </div>
       </div>
 
       <!--FOOTER-->
@@ -47,4 +42,3 @@
     </div>
   </body>
 </html>
-
