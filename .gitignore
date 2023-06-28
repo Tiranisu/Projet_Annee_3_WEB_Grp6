@@ -6,3 +6,8 @@ error.log
 .mysql_history
 .python_history
 .config
+.local/
+.viminfo
+.output.json
+.vim/
+

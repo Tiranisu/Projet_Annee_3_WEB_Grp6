@@ -175,5 +175,11 @@ function ajout_accident($db, $age, $date, $heure, $ville, $lat, $lon, $descr_ath
 }
 
 
+function get_all_crashed($db){
+    $query = $db->prepare("SELECT * FROM accident,descr_lum,ville,descr_athmo,descr_surface,descr_secu WHERE accident.id_descr_lum=descr_lum.id_descr_lum AND accident.code_insee=ville.code_insee AND accident.id_descr_athmo=descr_athmo.id_descr_athmo AND accident.id_descr_surface=descr_surface.id_descr_surface AND accident.id_descr_secu=descr_secu.id_descr_secu");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
 
 ?>
