@@ -1,4 +1,9 @@
 // import {ajaxRequest} from 'utils.js';
+
+
+document.getElementById('bloc_page').style.display = 'none';
+// document.getElementsByClassName('loader').style.display = 'none';
+
 function ajaxRequest(type, url, callback, data = null){
     let xhr;
   
@@ -72,6 +77,7 @@ function afficherListVille(infos){
         option.text = infos[i]["nom_ville"];
         element.add(option);
     }
+    endLoading();
 }
 
 
@@ -178,8 +184,13 @@ function afficherDescr_agglo(infos){
     
 }
 
+function endLoading(){
+    console.log("Load")
+    document.getElementById('bloc_page').style.display = 'flex';
+    document.getElementById('loader').style.display = 'none';
+}
 
-ajaxRequest('GET', `../php/ajout_accidentsRequest.php/listVille`, afficherListVille);
+
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_athmo`, afficherDescr_athmo);
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_lum`, afficherDescr_lum);
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_surface`, afficherDescr_surface);
@@ -188,9 +199,4 @@ ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_type_col`, afficherD
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_intersection`, afficherDescr_intersection);
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_cat_veh`, afficherDescr_cat_veh);
 ajaxRequest('GET', `../php/ajout_accidentsRequest.php/Descr_agglo`, afficherDescr_agglo);
-
-document.onload = function(){
-    console.log("Load")
-    document.getElementById('bloc_page').style.display = 'flex';
-    document.getElementById('loader').style.display = 'none';
-};
+ajaxRequest('GET', `../php/ajout_accidentsRequest.php/listVille`, afficherListVille);
