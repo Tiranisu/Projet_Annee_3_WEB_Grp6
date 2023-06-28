@@ -5,9 +5,23 @@
     <title>BlaBla Crash - Ajout</title>
     <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link href="https://fonts.cdnfonts.com/css/bukhari-script" rel="stylesheet">
+    
     <script type="text/javascript" src="/js/ajout_accident.js"></script>
+    <meta charset="UTF-8">
   </head>
   <body>
+  <!-- Animation de chargement de la page -->
+    <div class="loader">
+      <div class="animation">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+      <div class="text_loader">Chargement ... </div>
+    </div>
+
+
     <div id="bloc_page">
       <!--HEADER-->
       <div id="header">
@@ -87,7 +101,7 @@
             <label class="form_labels" for="form_agglo">Agglomération : </label>
             <select list="autocomplete-list" name="form_agglo" id="form_agglo" form="form_ajout"></select>
           </div>
-          
+  
           <input id="button_form" type="submit" value="Ajouter" form="form_ajout" onclick="envoyerAjout()">
         </div>
       </div>
