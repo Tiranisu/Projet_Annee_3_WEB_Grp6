@@ -1,8 +1,6 @@
-console.log("tt");
-
 function knn(data)
 {
     console.log(data);
 }
 
-ajaxRequest("GET", "php/knn.php/knn", knn);
+ajaxRequest("GET", "php/predict.php/knn/?id", knn);
