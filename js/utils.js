@@ -1,4 +1,4 @@
-function ajaxRequest(type, url, callback, data = null){
+export function ajaxRequest(type, url, callback, data = null){
     let xhr;
   
     // Create XML HTTP request.
