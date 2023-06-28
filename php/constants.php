@@ -5,4 +5,3 @@
   define('DB_NAME', 'etu746');
   define('DB_USER', 'etu746');
   define('DB_PASSWORD', 'mxpgltvv');
-
