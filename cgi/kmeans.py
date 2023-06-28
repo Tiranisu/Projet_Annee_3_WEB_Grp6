@@ -14,7 +14,6 @@ def F2_Preparation_Data_Pour_Classification(data, nombre_de_valeur):
     data_pos =pd.DataFrame(data=data, columns= ["lati", "longi"]).head(nombre_de_valeur)
     return data_pos
 
-
 def F2_Affichage_kMeans_Auto(data_pos, nombre_clusters):
     # Créer un objet KMeans avec le nombre de clusters souhaité
     kmeans = KMeans(n_clusters=nombre_clusters)

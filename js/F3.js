@@ -19,7 +19,6 @@ function crashDisplayer(data){
 };
 
 
-  
 
 
 
