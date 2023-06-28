@@ -6,11 +6,14 @@
 
 
 body {
+    height:100vh;    
+}
+
+#main_loader{
     height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: linear-gradient(to top left, #ff9999 0%, #54e7e9 100%); */
 }
 
 /* #bloc_page{
@@ -20,6 +23,7 @@ body {
 #loader{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 50px 30px 30px 30px;
     border-radius: 15px;
