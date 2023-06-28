@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Meta tags -->
+    <meta charset='utf-8'>
+
+    <!-- CSS Style -->
+
+    <!-- Font -->
+
+    <!-- Title -->
+    <title>ISEN - Projet Web</title>
+    <link rel="icon" type="image/png" href="/img/LOGO_BlaBla_Crash.png">
+    <script type="text/javascript" src="/js/ajout_accident.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <h2>TEST</h2>
+    <button id="monBouton" onclick="printtest()">Cliquez ici</button>
+    <p id="maValeur">Valeur initiale</p>
+
+    <form id="monFormulaire">
+        <label for="age">L'âge du conducteur:</label>
+        <input type="text" id="age" name="ageConducteur">
+        <br>      
+        <label for="date">La date :</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <label for="heure">L'heure :</label>
+        <input type="hours" id="heure" name="heure">
+        <br>
+        <label for="www">La ville:</label>
+        <select type="text" id="ville" name="ville"></select>
+        <br>
+        <label for="latitude">La latitude:</label>
+        <input type="text" id="latitude" name="latitude">
+        <br>
+        <label for="longitude">La longitude:</label>
+        <input type="text" id="longitude" name="longitude">
+        <br>
+        <label for="descr_athmo">Les conditions atmosphériques:</label>
+        <select id="descr_athmo" name="conditions">
+        </select>
+        <br>
+        <label for="descr_lum">La luminosité de la scène:</label>
+        <select id="descr_lum" name="luminosite">
+        </select>
+        <br>
+        <label for="descr_surface">L'état de la route:</label>
+        <select id="descr_surface" name="etatRoute">
+        </select>
+        <br>
+        <label for="descr_secu">L'état d'utilisation de la ceinture de sécurité:</label>
+        <select id="descr_secu" name="utilisationCeinture">
+        </select>
+        <br>
+        <label for="descr_type_col">La descr_type_col:</label>
+        <select id="descr_type_col">
+        </select>
+        <br>
+        <label for="descr_intersection">La descr_intersection:</label>
+        <select id="descr_intersection">
+        </select>
+        <br>
+        <label for="descr_cat_veh">La descr_cat_veh:</label>
+        <select id="descr_cat_veh">
+        </select>
+        <br>
+        <label for="descr_agglo">La descr_agglo:</label>
+        <select id="descr_agglo">
+        </select>
+        <br>
+        <button type="button" onclick="envoyerAjout()">Envoyer</button>
+      </form>
+
+    <!-- Home -->
+
+    <!-- Footer -->
+    
+  </body>
+</html>
