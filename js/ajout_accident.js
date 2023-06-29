@@ -101,7 +101,9 @@ function disconnect(){
 }
 
 function cons(infos){
-    // console.log(infos);
+    if(infos == true){
+        alert("Accident ajouté avec succès !");
+    }
 }
 
 function envoyerAjout(){

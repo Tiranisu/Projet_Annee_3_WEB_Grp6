@@ -1,16 +1,23 @@
+var mainDiv = document.getElementById('bloc_page');
+mainDiv.style.display = 'none';
+
 function test(data)
 {
-    // Pour le message de chargement
-    var loadingDiv = document.getElementById('loading');
-    var mainDiv = document.getElementById('div_style_map_visu');
-    mainDiv.style.display = 'none';
-    loadingDiv.style.display = 'flex';
 
     // Préparation des données
 	jdata = data.data;
-    let tab_lat = jdata.map(row => row[0]);
-    let tab_lon = jdata.map(row => row[1]);
+    let tab_lat = data.map(row => row['lati']);
+    let tab_lon = data.map(row => row['longi']);
+    let tab_athmo = data.map(row => row['nom_athmo']);
+    let tab_grav = data.map(row => row['nom_gravite']);
+
+    /*let tab_anot;
+
+    for (var i = 0; i < tab_lon.length; i++) {
+        let tab_anot = "<b>Athmo : </b>".tab_athmo[i];
+    }*/
    
+
     // Données pour la carte
     var data = [{
         type: 'scattermapbox',
@@ -19,8 +26,9 @@ function test(data)
         mode: 'markers',
         marker: {
             size: 5,
-            color: '#99E6FF'
-        }
+            color: '#007399'
+        },
+        text: tab_grav
     }];
 
     // Configuration de la carte
@@ -34,12 +42,42 @@ function test(data)
         showlegend: false
     };
 
+
+    var divCarte = document.getElementById('div_map_tableau');
+    divCarte.innerHTML = '';
     // Création de la carte
     Plotly.newPlot('div_map_tableau', data, layout);
 
-    // On affiche la div de la carte
-    loadingDiv.style.display = 'none';
-    mainDiv.style.display = 'flex';
 }
 
-ajaxRequest("GET", "php/kmeans.php", test);
+function endLoading(){
+    console.log("Loaded !")
+    document.getElementById('bloc_page').style.display = 'flex';
+    document.getElementById('main_loader').style.display = 'none';
+}
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    const el = document.getElementById('filtres');
+    if (el) {
+      el.addEventListener('change', filtrage2, false);
+    }
+  });
+
+
+
+
+  function filtrage2(){
+    
+    var ville = document.getElementById('form_ville').value;
+    var athmo = document.getElementById('form_athmo').value;
+    var lum = document.getElementById('form_lum').value;
+    var secu = document.getElementById('form_secu').value;
+    var surface = document.getElementById('form_route').value;
+    var gravite = document.getElementById('form_gravite').value;
+
+    ajaxRequest('GET', 'php/F3.php/filtre_request/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, test);
+
+  }
+//ajaxRequest("GET", "php/predict.php/kmeans", test);
+//ajaxRequest('GET', 'php/F3.php/filtre_request/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, crashDisplayer);
+filtrage2();

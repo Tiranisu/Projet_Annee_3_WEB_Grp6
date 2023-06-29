@@ -1,12 +1,8 @@
+var mainDiv = document.getElementById('bloc_page');
+mainDiv.style.display = 'none';
 
 function test(data)
 {
-    // Pour le message de chargement
-    var loadingDiv = document.getElementById('loading');
-    var mainDiv = document.getElementById('div_style_map_clusters');
-    mainDiv.style.display = 'none';
-    loadingDiv.style.display = 'flex';
-
     // Préparation des données
 	jdata = data.data;
     let tab_lat = jdata.map(row => row[0]);
@@ -39,9 +35,13 @@ function test(data)
     // Création de la carte
     Plotly.newPlot('div_style_map_clusters', data, layout);
 
-    // On affiche la div de la carte
-    loadingDiv.style.display = 'none';
-    mainDiv.style.display = 'flex';
+    endLoading();
 }
 
-ajaxRequest("GET", "php/kmeans.php", test);
+function endLoading(){
+    console.log("Loaded !")
+    document.getElementById('bloc_page').style.display = 'flex';
+    document.getElementById('main_loader').style.display = 'none';
+}
+
+ajaxRequest("GET", "php/predict.php/kmeans", test);

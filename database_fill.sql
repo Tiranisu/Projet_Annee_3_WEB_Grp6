@@ -1,3 +1,5 @@
+use etu746;
+
 DELETE FROM ville;
 DELETE FROM descr_cat_veh;
 DELETE FROM descr_agglo;

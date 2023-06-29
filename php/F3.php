@@ -1,5 +1,5 @@
 <?php
-require_once("database_F3.php");
+require_once("database.php");
 
 
 ini_set('display_errors', 1);
@@ -42,7 +42,40 @@ if($requestMethod == "GET"){
         }
         $data = get_filter_crash($db, $_GET['ville'], $_GET['athmo'], $_GET['lum'], $_GET['surface'], $_GET['secu'], $_GET['gravite']);
     }
+    if($requestRessource == "get_accident_infos"){
+        $id = array_shift($request);
+        if ($id == "") {
+            $id = NULL;
+        }
+        $data = get_accident_infos($db, $_GET['id_accident']);
+    }
+    if($requestRessource == "predictions"){
+        $id = array_shift($request);
+        if ($id == "") {
+            $id = NULL;
+        }
+        //$data[0] = get_accident_infos($db, $_GET['id_accident']);
+        exec("python ../cgi/knn.py ../export ".$_GET['age']." ".$_GET['heure']." ".$_GET['cat_veh']." ".$_GET['agglo']." ".$_GET['athmo']." ".$_GET['inter']." ".$_GET['secu']." ".$_GET['col']." 10",$data[0]);
+    
+        exec("python ../cgi/F4_algorithmes_haut_niveau.py ".$_GET['age']." ".$_GET['heure']." ".$_GET['cat_veh']." ".$_GET['agglo']." ".$_GET['athmo']." ".$_GET['inter']." ".$_GET['secu']." ".$_GET['col']." RF",$data[1]);
+        exec("python ../cgi/F4_algorithmes_haut_niveau.py ".$_GET['age']." ".$_GET['heure']." ".$_GET['cat_veh']." ".$_GET['agglo']." ".$_GET['athmo']." ".$_GET['inter']." ".$_GET['secu']." ".$_GET['col']." MLP",$data[2]);
+        exec("python ../cgi/F4_algorithmes_haut_niveau.py ".$_GET['age']." ".$_GET['heure']." ".$_GET['cat_veh']." ".$_GET['agglo']." ".$_GET['athmo']." ".$_GET['inter']." ".$_GET['secu']." ".$_GET['col']." SVM",$data[3]);
+
+    }
 }
+if($requestMethod == "PUT"){
+    $id = array_shift($request);
+    if ($id == "") {
+        $id = NULL;
+    }
+    if($requestRessource=="update_gravite"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $data=update_gravite($db, $_PUT['id_accident'], $_PUT['gravite']);
+    }
+
+
+}
+
 
 
 

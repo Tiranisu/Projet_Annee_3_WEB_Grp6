@@ -32,6 +32,7 @@ df = pd.read_csv(sys.argv[1]+".csv",low_memory=False)
 #predict=knn_for_web(df,[10,2,1,1,1,14,2,2],10)
 
 predict=knn_for_web(df,[int(sys.argv[2]),int(sys.argv[3]),int(sys.argv[4]),int(sys.argv[5]),int(sys.argv[6]),int(sys.argv[7]),int(sys.argv[8]),int(sys.argv[9])],int(sys.argv[10]))
+print(predict)
 
 
 value={"predict":str(predict)}

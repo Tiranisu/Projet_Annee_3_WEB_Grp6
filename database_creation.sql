@@ -2,6 +2,8 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+use etu746;
+
 DROP TABLE IF EXISTS comprend CASCADE;
 DROP TABLE IF EXISTS accident CASCADE;
 DROP TABLE IF EXISTS ville CASCADE;
