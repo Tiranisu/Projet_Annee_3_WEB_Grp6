@@ -114,6 +114,13 @@ body {
     margin-right: 15%;
 }
 
+/*CLUSTERS*/
+#div_style_map_clusters {
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
 /*VISUALISATION*/
 #div_style_map_visu {
     display: flex;
