@@ -24,5 +24,4 @@ window.onclick = function(event) {
   }
 }
 
-endLoading();
 

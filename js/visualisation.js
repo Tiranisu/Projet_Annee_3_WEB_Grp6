@@ -48,7 +48,6 @@ function test(data)
     // Création de la carte
     Plotly.newPlot('div_map_tableau', data, layout);
 
-    endLoading();
 }
 
 function endLoading(){

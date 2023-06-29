@@ -1,12 +1,3 @@
-
-
-function endLoading(){
-  console.log("Loaded !")
-  document.getElementById('bloc_page').style.display = 'flex';
-  document.getElementById('main_loader').style.display = 'none';
-}
-
-
 function predictor(){
   var modaltext=document.getElementById('modal_text');
   var knn_pred=document.getElementById('knn_pred');
