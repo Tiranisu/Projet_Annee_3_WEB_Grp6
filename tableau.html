@@ -4,15 +4,29 @@
     <title>BlaBla Crash - Visualisation</title>
     <link rel="icon" href="img/LOGO_BlaBla_Crash.png">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/ajout.css" type="text/css" media="screen" />
+    <link href="https://fonts.cdnfonts.com/css/bukhari-script" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
     <script src="https://unpkg.com/mapbox-gl@latest/dist/mapbox-gl.js"></script>
     <script src="js/utils.js" charset="utf-8"></script> 
-    <script src="js/visualisation.js" charset="utf-8"></script>
+    <script src="js/visualisation.js" charset="utf-8" defer></script>
     <meta charset="UTF-8">
   </head>
   <body>
 
-    <div id="bloc_page">
+  <!-- Animation de chargement de la page -->
+  <div id="main_loader">
+    <div id="loader">
+      <div class="animation">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+      <div class="text_loader">Chargement ... </div>
+    </div>
+  </div>
+
+    <div id="bloc_page" style="display: none;">
 
       <!-- HEADER -->
       <div id="header">
@@ -20,11 +34,6 @@
         <div class="text_header"><a id="text_header_accueil" href="index.html">Accueil</a></div>
         <div class="text_header"><a id="text_header_visualisation" href="tableau.html">Visualisation</a></div>
         <div class="text_header"><a id="text_header_ajout" href="ajout.html">Ajout d'accident</a></div>
-      </div>
-
-      <!-- DIV DE CHARGEMENT -->
-      <div id="loading" class="loading-div">
-        <h2>BOUGE PAS !</h2>
       </div>
 
       <!-- DIV CARTE -->
