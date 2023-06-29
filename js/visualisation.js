@@ -3,8 +3,6 @@ mainDiv.style.display = 'none';
 
 function test(data)
 {
-    console.log(data)
-    //console.log(data)
 
     // Préparation des données
 	jdata = data.data;
@@ -19,7 +17,6 @@ function test(data)
         let tab_anot = "<b>Athmo : </b>".tab_athmo[i];
     }*/
    
-    console.log(tab_lon)
 
     // Données pour la carte
     var data = [{
@@ -63,14 +60,14 @@ function endLoading(){
 window.addEventListener("DOMContentLoaded", (event) => {
     const el = document.getElementById('filtres');
     if (el) {
-      el.addEventListener('change', filtrage, false);
+      el.addEventListener('change', filtrage2, false);
     }
   });
 
 
 
 
-  function filtrage(){
+  function filtrage2(){
     
     var ville = document.getElementById('form_ville').value;
     var athmo = document.getElementById('form_athmo').value;
@@ -78,17 +75,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var secu = document.getElementById('form_secu').value;
     var surface = document.getElementById('form_route').value;
     var gravite = document.getElementById('form_gravite').value;
-    console.log(ville);
-    console.log(athmo);
-    console.log(lum);
-    console.log(secu);
-    console.log(surface);
-    console.log(gravite);
 
-
-    ajaxRequest('GET', 'php/F3.php/filtre_map/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, test);
+    ajaxRequest('GET', 'php/F3.php/filtre_request/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, test);
 
   }
 //ajaxRequest("GET", "php/predict.php/kmeans", test);
 //ajaxRequest('GET', 'php/F3.php/filtre_request/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, crashDisplayer);
-filtrage();
+filtrage2();

@@ -2,6 +2,8 @@
 //--- MODAL ----------------------------------------------------------
 //------------------------------------------------------------------------------
 
+document.getElementById('bloc_page').style.display = 'none';
+
 var modal = document.getElementById("myModal");
 
 var btn = document.getElementById("predict_button");
@@ -21,4 +23,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+endLoading();
 
