@@ -42,6 +42,13 @@ if($requestMethod == "GET"){
         }
         $data = get_filter_crash($db, $_GET['ville'], $_GET['athmo'], $_GET['lum'], $_GET['surface'], $_GET['secu'], $_GET['gravite']);
     }
+    if($requestRessource == "filtre_map"){
+        $id = array_shift($request);
+        if ($id == "") {
+            $id = NULL;
+        }
+        $data = get_filter_map($db, $_GET['ville'], $_GET['athmo'], $_GET['lum'], $_GET['surface'], $_GET['secu'], $_GET['gravite']);
+    }
 }
 
 

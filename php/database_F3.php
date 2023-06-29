@@ -69,6 +69,49 @@ require_once("constants.php");
     return $result;
 }
 
+function get_filter_map($db, $ville, $athmo, $lum, $surface, $secu, $gravite){
+    
+    if ($ville == "0") {
+        $ville = " 1=1";
+    } else {
+        $ville = " nom_ville ='" . $ville . "'";
+    }
+    if ($athmo == "0") {
+        $athmo = " 1=1";
+    } else {
+        $athmo = " nom_athmo='" . $athmo . "'";
+    }
+    if ($lum == "0") {
+        $lum = " 1=1";
+    } else {
+        $lum = " nom_lum='" . $lum . "'";
+    }
+    if ($surface == "0") {
+        $surface = " 1=1";
+    } else {
+        $surface = " nom_surface='" . $surface . "'";
+    }
+    if ($secu == "0") {
+        $secu = " 1=1";
+    } else {
+        $secu = " nom_secu='" . $secu . "'";
+    }
+    if ($gravite == "0") {
+        $gravite = " 1=1";
+    } else {
+        $gravite = " nom_gravite='" . $gravite . "'";
+    }
+    
+
+
+
+
+    //$statement = $db->prepare("SELECT utilisateur.nom as orga_nom, utilisateur.prenom as orga_prenom, ville.nom_ville, sport.nom_sport, match.id as match_id, sport.id as sport_id, match.code_insee, match.nom, match.date, match.description, match.duree, match.prix, match.recompense, match.joueursmax, match.joueursinscrits, match.id_organiser FROM utilisateur, match, ville, sport WHERE match.date > '".$date."' AND match.id_organiser = utilisateur.id AND match.id_sport = sport.id AND match.code_insee = ville.code_insee AND " . $ville . " AND " . $sport . " AND " . $periode . " AND " . $dispo . ";");
+    $statement = $db->prepare("SELECT id_accident,age,date,heure,nom_ville,lati,longi,nom_athmo,nom_lum,nom_surface,nom_secu,nom_gravite FROM accident,descr_lum,ville,descr_athmo,descr_surface,descr_secu,gravite WHERE accident.id_descr_lum=descr_lum.id_descr_lum AND accident.code_insee=ville.code_insee AND accident.id_descr_athmo=descr_athmo.id_descr_athmo AND accident.id_descr_surface=descr_surface.id_descr_surface AND accident.id_descr_secu=descr_secu.id_descr_secu AND accident.id_gravite=gravite.id_gravite AND ".$ville." AND ".$secu." AND ".$surface." AND ".$athmo." AND ".$lum." AND ".$gravite." ORDER BY id_accident DESC LIMIT 70500");
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
 
 
 

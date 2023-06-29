@@ -191,6 +191,30 @@ th:nth-child(even),td:nth-child(even) {
   display:flex;
 }
 
+#clusters_button {
+  padding-top: 1em;
+  background-color: #ff9999;
+  border-radius: 5px;
+  border: none;
+  color: #000000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  padding: 8px 4px;
+  text-transform: uppercase;
+  -webkit-transition: .2s ease all;
+  -o-transition: .2s ease all;
+  transition: .2s ease all;
+  margin: auto;
+  display:flex;
+}
+
+#clusters_button:hover{
+  background:#FFFFFF;
+  letter-spacing: 0.3em;
+  box-shadow: 0 0 35px #ff9999;
+}
+
 #predict_button:hover{
   background:#FFFFFF;
   letter-spacing: 0.3em;
