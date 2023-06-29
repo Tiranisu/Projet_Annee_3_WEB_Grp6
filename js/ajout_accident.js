@@ -1,9 +1,5 @@
 // import {ajaxRequest} from 'utils.js';
 
-
-document.getElementById('bloc_page').style.display = 'none';
-// document.getElementsByClassName('loader').style.display = 'none';
-
 function ajaxRequest(type, url, callback, data = null){
     let xhr;
   
@@ -33,14 +29,81 @@ function ajaxRequest(type, url, callback, data = null){
     xhr.send(data);
 }
 
-function printtest(infos){
+
+document.getElementById('bloc_page').style.display = 'none';
+
+
+function getCookie(c_name) {
+    let c_start
+    let c_end
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
+
+function cookieForConnect($token){
+    var accessToken = getCookie('accessToken');
+    if(accessToken.length == 0){
+        document.getElementById('login_form').style.display = 'flex';
+    }else{
+        ajaxRequest('GET', `../php/ajout_accidentsRequest.php/user?accessToken=${accessToken}`, menuConnexion);
+    }
+}
+
+function menuConnexion(infos){
     console.log(infos);
-    var element = document.getElementById("maValeur");
-    element.innerHTML = "OUI !";
+    var accessToken = getCookie('accessToken');
+    if(infos[0]["login"] == "admin"){
+        document.getElementById('login_form').style.display = 'none';
+        document.getElementById('bloc_page').style.display = 'flex';
+    }
+}
+
+function createCookie(value){
+    document.cookie = "accessToken = " + value + "; path =/;";
+    location.reload();
+}
+
+function connect(){
+    var login = document.getElementById("login").value;
+    var passwd = document.getElementById("passwd").value;
+    console.log(login);
+    console.log(passwd);
+    ajaxRequest('GET', `../php/ajout_accidentsRequest.php/register?login=${login}&passwd=${passwd}`, canConnect);
+}
+
+function canConnect(infos){
+    console.log(infos);
+    var login = document.getElementById("login").value;
+    if(infos == true){
+        ajaxRequest('GET', `../php/ajout_accidentsRequest.php/token?login=${login}`, createCookie)
+    }
+}
+
+function deleteCookie(name){
+    // Creation d'un cookie 
+    document.cookie = name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+}
+
+function disconnect(){
+    deleteCookie('accessToken');
+    location.reload();
 }
 
 function cons(infos){
-    // console.log(infos);
+    if(infos == true){
+        alert("Accident ajouté avec succès !");
+    }
 }
 
 function envoyerAjout(){
@@ -186,8 +249,8 @@ function afficherDescr_agglo(infos){
 
 function endLoading(){
     console.log("Loaded !")
-    document.getElementById('bloc_page').style.display = 'flex';
     document.getElementById('main_loader').style.display = 'none';
+    cookieForConnect();
 }
 
 

@@ -185,15 +185,67 @@ function ajout_accident($db, $age, $date, $heure, $ville, $lat, $lon, $descr_ath
 }
 
 
-
 function get_all_crashs($db){
     $query = $db->prepare("SELECT id_accident,age,date,heure,nom_ville,lati,longi,nom_athmo,nom_lum,nom_surface,nom_secu,nom_gravite FROM accident,descr_lum,ville,descr_athmo,descr_surface,descr_secu,gravite WHERE accident.id_descr_lum=descr_lum.id_descr_lum AND accident.code_insee=ville.code_insee AND accident.id_descr_athmo=descr_athmo.id_descr_athmo AND accident.id_descr_surface=descr_surface.id_descr_surface AND accident.id_descr_secu=descr_secu.id_descr_secu AND accident.id_gravite=gravite.id_gravite ORDER BY id_accident DESC LIMIT 500");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
-  }
+}
 
-  function get_filter_crash($db, $ville, $athmo, $lum, $surface, $secu, $gravite){
+
+function checkConnect($db, $login, $password){
+    try{
+        $request = 'SELECT passwd FROM users WHERE login=:login';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':login', $login);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if($result[0]['passwd'] == $password){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    catch(PDOException $e){
+        return false;
+    }
+}
+
+
+
+function getAccessToken($db, $login){
+    try{
+        $access_token = hash('sha256', $login . time());
+        $request = 'UPDATE users SET access_token = :access_token WHERE login = :login';
+        $statement = $db->prepare($request);
+        $statement->bindParam(':login', $login);
+        $statement->bindParam(':access_token', $access_token);
+        $statement->execute();
+
+        return $access_token;
+    }
+    catch(PDOException $e){
+        return false;
+    }
+}
+
+
+function getUser($conn, $accessToken){
+    try{
+        $request = 'SELECT * FROM users WHERE access_token=:accessToken';
+        $statement = $conn->prepare($request);
+        $statement->bindParam(':accessToken', $accessToken);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $e){
+        return false;
+    }
+}
+
+  
+
+function get_filter_crash($db, $ville, $athmo, $lum, $surface, $secu, $gravite){
     
     if ($ville == "0") {
         $ville = " 1=1";
@@ -251,7 +303,5 @@ function update_gravite($db,$id,$grav){
 }
 
 
-
-?>
 
 

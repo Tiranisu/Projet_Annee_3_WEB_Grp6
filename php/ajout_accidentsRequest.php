@@ -48,6 +48,16 @@ if($requestMethod == "POST"){
     if($requestRessource == "Descr_agglo"){
         $data = getDescr_agglo($db);
     }
+    if($requestRessource == "user"){
+        $data = getUser($db, $_GET['accessToken']);
+    }
+    if($requestRessource == "register"){
+        $data = checkConnect($db, $_GET['login'], $_GET['passwd']);
+    }
+    if($requestRessource == "token"){
+        $data = getAccessToken($db, $_GET['login']);
+    }
+    
 }
 
 
