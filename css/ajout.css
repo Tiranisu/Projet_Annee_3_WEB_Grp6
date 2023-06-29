@@ -16,6 +16,19 @@ body {
     align-items: center;
 }
 
+#login_form{
+    display: flex;
+	flex-direction: column;
+}
+
+#form{
+    display: flex;
+    height:82vh;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* #bloc_page{
     display: none;
 } */

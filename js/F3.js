@@ -1,16 +1,83 @@
 function predictor(){
   var modaltext=document.getElementById('modal_text');
+  var knn_pred=document.getElementById('knn_pred');
+  var rand_forest_pred=document.getElementById('rand_forest_pred');
+  var multi_pred=document.getElementById('multi_pred');
+  var vector_pred=document.getElementById('vector_pred');
+  var global_pred=document.getElementById('global_pred');
+  var modal_loading = document.getElementById('modal_loading');
 
+  knn_pred.innerHTML="";
+  rand_forest_pred.innerHTML="";
+  multi_pred.innerHTML="";
+  vector_pred.innerHTML="";
+  global_pred.innerHTML="";
+  modal_loading.innerHTML="";
+  
   if(!document.querySelector('input[name="selection"]:checked')){
     modaltext.innerHTML='Veuillez sélectionner un accident !';
     modaltext.style.color = "red";
+
   }
   else{
     accident_predict = document.querySelector('input[name="selection"]:checked').value;
     modaltext.innerHTML='Prédictions pour l\'accident : '+accident_predict;
     modaltext.style.color = "black";
-  console.log(accident_predict);
+    modal_loading.innerHTML="Chargement...";
+    ajaxRequest('GET', 'php/F3.php/get_accident_infos?id_accident='+accident_predict, recuperer_infos);
+  //console.log(accident_predict);
   }
+}
+
+function recuperer_infos(data){
+  ajaxRequest('GET', 'php/F3.php/predictions?age='+data[0]["age"]+'&heure='+data[0]["heure"]+'&cat_veh='+data[0]["id_descr_cat_veh"]+'&agglo='+data[0]["id_descr_agglo"]+'&athmo='+data[0]["id_descr_athmo"]+'&inter='+data[0]["id_descr_intersection"]+'&secu='+data[0]["id_descr_secu"]+'&col='+data[0]["id_descr_type_col"], afficher_prediction);
+}
+
+function afficher_prediction(data){
+  var knn_pred=document.getElementById('knn_pred');
+  var rand_forest_pred=document.getElementById('rand_forest_pred');
+  var multi_pred=document.getElementById('multi_pred');
+  var vector_pred=document.getElementById('vector_pred');
+  var global_pred=document.getElementById('global_pred');
+  var modal_loading = document.getElementById('modal_loading');
+  modal_loading.innerHTML="";
+  let predict_text = [];
+  for(let i=0; i<4;i++){
+    if(data[i][0]==0){
+      predict_text[i]='Indemne';
+    }
+    else if(data[i][0]==1){
+      predict_text[i]='Blessé léger';
+    }
+    else if(data[i][0]==2){
+      predict_text[i]='Blessé hospitalisé';
+    }
+    else if(data[i][0]==3){
+      predict_text[i]='Tué';
+    }
+  }
+  knn_pred.innerHTML="KNN prediction : "+predict_text[0];
+  rand_forest_pred.innerHTML="Random-Forest prediction : "+predict_text[1];
+  multi_pred.innerHTML="Multilayer prediction : "+predict_text[2];
+  vector_pred.innerHTML="Vector prediction : "+predict_text[3];
+
+  var globalpredict = parseInt(data[0][0])*0.58+parseInt(data[1][0])*0.67+parseInt(data[2][0])*0.5+parseInt(data[3][0])*0.6;
+  globalpredict=Math.round(globalpredict/2.35);
+  var globalpredict_text;
+  if(globalpredict==0){ 
+    globalpredict_text='Indemne';}
+  else if(globalpredict==1){
+    globalpredict_text='Blessé léger';}
+  else if(globalpredict==2){
+    globalpredict_text='Blessé hospitalisé';}
+  else if(globalpredict==3){
+    globalpredict_text='Tué';}
+
+  global_pred.innerHTML="Global prediction : "+globalpredict_text;
+
+  accident_predict = document.querySelector('input[name="selection"]:checked').value;
+  ajaxRequest('PUT', 'php/F3.php/update_gravite/i',()=>[],'id_accident='+accident_predict+'&gravite='+globalpredict);
+
 }
 
 
@@ -22,13 +89,6 @@ function filtrage(){
     var secu = document.getElementById('form_secu').value;
     var surface = document.getElementById('form_route').value;
     var gravite = document.getElementById('form_gravite').value;
-    console.log(ville);
-    console.log(athmo);
-    console.log(lum);
-    console.log(secu);
-    console.log(surface);
-    console.log(gravite);
-
 
     ajaxRequest('GET', 'php/F3.php/filtre_request/?ville='+ville+'&athmo='+athmo+'&lum='+lum+'&secu='+secu+'&surface='+surface+'&gravite='+gravite, crashDisplayer);
 
@@ -66,6 +126,8 @@ function crashDisplayer(data){
       elem.innerHTML='<td class="sep"><div class="text2 acc_id">'+d["id_accident"]+'</div></td><td class="sep"><div class="text2 acc_age">'+d["age"]+'</div></td><td class="sep"><div class="text2 acc_date">'+d["date"]+'</div></td><td class="sep"><div class="text2 acc_heure">'+d["heure"]+'</div></td><td class="sep"><div class="text2 acc_ville">'+d["nom_ville"]+'</div></td><td class="sep"><div class="text2 acc_lat">'+d["lati"]+'</div></td><td class="sep"><div class="text2 acc_lon">'+d["longi"]+'</div></td><td class="sep"><div class="text2 acc_athm">'+d["nom_athmo"]+'</div></td><td class="sep"><div class="text2 acc_lum">'+d["nom_lum"]+'</div></td><td class="sep"><div class="text2 acc_sur">'+d["nom_surface"]+'</div></td><td class="sep"><div class="text2 acc_sec">'+d["nom_secu"]+'</div></td><td class="sep"><div class="text2 acc_grav" '+str_col+'>'+d["nom_gravite"]+'</div></td><td class="sep"><div class="text2 acc_select"><input type="radio" class="radio_input" name="selection" value="'+d["id_accident"]+'"></div></td>';
       crashTable.appendChild(elem);
     }
+    endLoading();
+
 
   //console.log(data);
 };
