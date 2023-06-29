@@ -10,6 +10,10 @@
     <script src="https://unpkg.com/mapbox-gl@latest/dist/mapbox-gl.js"></script>
     <script src="js/utils.js" charset="utf-8"></script> 
     <script src="js/visualisation.js" charset="utf-8" defer></script>
+    <link href="css/F3.css" rel="stylesheet">
+    <script src="js/F3.js"></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/predict.js"></script>
     <meta charset="UTF-8">
   </head>
   <body>
@@ -36,14 +40,164 @@
         <div class="text_header"><a id="text_header_ajout" href="ajout.html">Ajout d'accident</a></div>
       </div>
 
+      <div style="overflow:auto; height: 60vh; width: 90wh; margin-bottom: 25px; margin-top: 25px;">
+      <div id="filtres">
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                VILLE
+            </button>
+            <select type="text" id="form_ville">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                ATHMOSPHERE
+            </button>
+            <select name="form_athmo" id="form_athmo" >
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                LUMINOSITE
+            </button>
+            <select name="form_lum" id="form_lum">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                SURFACE
+            </button>
+            <select name="form_route" id="form_route">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                SECURITE
+            </button>
+            <select name="form_secu" id="form_secu">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                GRAVITE
+            </button>
+            <select name="form_gravite" id="form_gravite">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+    </div>
+
+    <table class="items">
+        <thead>
+            <tr>
+                <th class="sep">
+                    <div class="text">
+                        ID
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Age
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Date
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Heure
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Ville
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Lattitude
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Longitude
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Athmosphère
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Luminosité
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Surface
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Sécurité
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Gravité
+                    </div>
+                </th>
+                <th class="sep">
+                    <div class="text">
+                        Sélection
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody id="table_body">
+        </tbody>
+    </table>
+    </div>
+
       <!-- DIV CARTE -->
       <div id="div_style_map_visu">
         <div id="div_map_tableau"></div>
         <div id="boutons_visu">
-          <input type="button" value="Clusters" onclick="location.href='clusters.html';">
-          <input type="button" value="Prédire">
+         <!-- <input type="button" value="Clusters" onclick="location.href='clusters.html';"> -->
         </div>
       </div> 
+
+      <button id="clusters_button" type="button" style="margin-top: 20px; margin-bottom: 20px;" onclick="location.href='clusters.html';"><span id="">Afficher la carte des clusters</span></button>
+      <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal_text">Some text in the Modal..</p>
+          </div>
+        
+        </div>
+
+      <button id="predict_button" type="submit" style="margin-top: 20px; margin-bottom: 20px;"><span id="">Prédire la gravité d'un accident</span></button>
+      <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal_text">Some text in the Modal..</p>
+          </div>
+        
+        </div>
 
       <!--FOOTER-->
       <div id="footer">
