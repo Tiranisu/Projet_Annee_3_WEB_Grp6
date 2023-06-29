@@ -118,5 +118,5 @@ INSERT INTO gravite(id_gravite,nom_gravite) VALUES (3,"Tué");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (4,"NDF");
 
 
-INSERT INTO users(login,passwd) VALUES ("admin", "$2y$10$LE.jqaJn8.CSxwy/8fTw/OIitMJMCO5Yw26rPozRmE5g2aQ8UVL3S");
+INSERT INTO users(login,passwd) VALUES ("admin", "admin");
 

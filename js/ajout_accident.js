@@ -54,18 +54,15 @@ function getCookie(c_name) {
 function cookieForConnect($token){
     var accessToken = getCookie('accessToken');
     if(accessToken.length == 0){
-        menuConnexion();
+        document.getElementById('login_form').style.display = 'flex';
     }else{
         ajaxRequest('GET', `../php/ajout_accidentsRequest.php/user?accessToken=${accessToken}`, menuConnexion);
     }
 }
 
-function menuConnexion(infos = null){
+function menuConnexion(infos){
     console.log(infos);
     var accessToken = getCookie('accessToken');
-    if(infos == null){
-        document.getElementById('login_form').style.display = 'flex';
-    }
     if(infos[0]["login"] == "admin"){
         document.getElementById('login_form').style.display = 'none';
         document.getElementById('bloc_page').style.display = 'flex';
@@ -74,27 +71,33 @@ function menuConnexion(infos = null){
 
 function createCookie(value){
     document.cookie = "accessToken = " + value + "; path =/;";
-    reload();
+    location.reload();
 }
 
 function connect(){
     var login = document.getElementById("login").value;
     var passwd = document.getElementById("passwd").value;
+    console.log(login);
+    console.log(passwd);
     ajaxRequest('GET', `../php/ajout_accidentsRequest.php/register?login=${login}&passwd=${passwd}`, canConnect);
 }
 
 function canConnect(infos){
+    console.log(infos);
     var login = document.getElementById("login").value;
-    if(infos[0] == true){
+    if(infos == true){
         ajaxRequest('GET', `../php/ajout_accidentsRequest.php/token?login=${login}`, createCookie)
     }
 }
 
+function deleteCookie(name){
+    // Creation d'un cookie 
+    document.cookie = name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC"
+}
 
-function printtest(infos){
-    console.log(infos);
-    var element = document.getElementById("maValeur");
-    element.innerHTML = "OUI !";
+function disconnect(){
+    deleteCookie('accessToken');
+    location.reload();
 }
 
 function cons(infos){

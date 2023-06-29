@@ -182,13 +182,18 @@ function get_all_crashs($db){
 
 function checkConnect($db, $login, $password){
     try{
-        $request = 'SELECT password FROM users WHERE login=:login';
+        $request = 'SELECT passwd FROM users WHERE login=:login';
         $statement = $db->prepare($request);
         $statement->bindParam(':login', $login);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        $password_hash = $result[0]['passwd'];
-        if(password_verify($password, $password_hash)){
+        // $password_hash = $result[0]['passwd'];
+        // if(password_verify($password, $password_hash)){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        if($result[0]['passwd'] == $password){
             return true;
         }else{
             return false;
