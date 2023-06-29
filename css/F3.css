@@ -247,3 +247,9 @@ th:nth-child(even),td:nth-child(even) {
   letter-spacing: 0.1em;
   padding: 8px 4px;
 }
+
+#modal_loading{
+  color: #22e3ead1;
+  font-weight: italic;
+  font-size: 1.5rem;
+}

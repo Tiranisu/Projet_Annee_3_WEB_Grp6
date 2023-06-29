@@ -5,20 +5,25 @@ function predictor(){
   var multi_pred=document.getElementById('multi_pred');
   var vector_pred=document.getElementById('vector_pred');
   var global_pred=document.getElementById('global_pred');
+  var modal_loading = document.getElementById('modal_loading');
 
+  knn_pred.innerHTML="";
+  rand_forest_pred.innerHTML="";
+  multi_pred.innerHTML="";
+  vector_pred.innerHTML="";
+  global_pred.innerHTML="";
+  modal_loading.innerHTML="";
+  
   if(!document.querySelector('input[name="selection"]:checked')){
     modaltext.innerHTML='Veuillez sélectionner un accident !';
     modaltext.style.color = "red";
-    knn_pred.innerHTML="";
-    rand_forest_pred.innerHTML="";
-    multi_pred.innerHTML="";
-    vector_pred.innerHTML="";
-    global_pred.innerHTML="";
+
   }
   else{
     accident_predict = document.querySelector('input[name="selection"]:checked').value;
     modaltext.innerHTML='Prédictions pour l\'accident : '+accident_predict;
     modaltext.style.color = "black";
+    modal_loading.innerHTML="Chargement...";
     ajaxRequest('GET', 'php/F3.php/get_accident_infos?id_accident='+accident_predict, recuperer_infos);
   //console.log(accident_predict);
   }
@@ -34,6 +39,8 @@ function afficher_prediction(data){
   var multi_pred=document.getElementById('multi_pred');
   var vector_pred=document.getElementById('vector_pred');
   var global_pred=document.getElementById('global_pred');
+  var modal_loading = document.getElementById('modal_loading');
+  modal_loading.innerHTML="";
   let predict_text = [];
   for(let i=0; i<4;i++){
     if(data[i][0]==0){

@@ -177,15 +177,6 @@
       </div> 
 
       <button id="clusters_button" type="button" style="margin-top: 20px; margin-bottom: 20px;" onclick="location.href='clusters.html';"><span id="">Afficher la carte des clusters</span></button>
-      <div id="myModal" class="modal">
-
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="modal_text2">Some text in the Modal..</p>
-          </div>
-        
-        </div>
 
       <button id="predict_button" type="submit" style="margin-top: 20px; margin-bottom: 20px;"><span id="">Prédire la gravité d'un accident</span></button>
       <div id="myModal" class="modal">
@@ -194,7 +185,7 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <p id="modal_text"></p>
-
+            <p id="modal_loading"></p>
             <p id="knn_pred"></p>
             <p id="rand_forest_pred"></p>
             <p id="multi_pred"></p>
