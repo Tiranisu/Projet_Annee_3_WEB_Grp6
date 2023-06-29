@@ -2,7 +2,7 @@
 
 
 document.getElementById('bloc_page').style.display = 'none';
-// document.getElementsByClassName('loader').style.display = 'none';
+
 
 function ajaxRequest(type, url, callback, data = null){
     let xhr;
