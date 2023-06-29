@@ -24,6 +24,25 @@
     </div>
   </div>
 
+  <div id="login_form" style="display: none;">
+    <div id="form">
+      <div id="titre_ajout">
+        <h2>Connexion : </h2>
+        <h3>Afin d'avoir accès à l'ajout d'un nouvel accident.</h3>
+      </div>
+      <div class="champ_form" id="login">
+        <label class="form_labels" for="form_age" form="form_ajout">Login : </label>
+        <input type="text" id="login" name="login"></select>
+      </div>
+
+      <div class="champ_form" id="passwd">
+        <label class="form_labels" for="passwd" form="form_ajout">Mot de passe : </label>
+        <input type="password" id="passwd" name="passwd"></select>
+      </div>
+      <input id="button_form" type="submit" value="Ajouter" form="form_ajout" onclick="connect()">
+    </div>
+  </div>
+
     <div id="bloc_page">
 
       <!-- HEADER -->
@@ -104,7 +123,7 @@
             <label class="form_labels" for="form_agglo">Agglomération : </label>
             <select list="autocomplete-list" name="form_agglo" id="form_agglo" form="form_ajout"></select>
           </div>
-          
+
           <input id="button_form" type="submit" value="Ajouter" form="form_ajout" onclick="envoyerAjout()">
         </div>
       </div>

@@ -1,9 +1,5 @@
 // import {ajaxRequest} from 'utils.js';
 
-
-document.getElementById('bloc_page').style.display = 'none';
-
-
 function ajaxRequest(type, url, callback, data = null){
     let xhr;
   
@@ -32,6 +28,68 @@ function ajaxRequest(type, url, callback, data = null){
     // Send XML HTTP request.
     xhr.send(data);
 }
+
+
+document.getElementById('bloc_page').style.display = 'none';
+
+
+function getCookie(c_name) {
+    let c_start
+    let c_end
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
+
+function cookieForConnect($token){
+    var accessToken = getCookie('accessToken');
+    if(accessToken.length == 0){
+        menuConnexion();
+    }else{
+        ajaxRequest('GET', `../php/ajout_accidentsRequest.php/user?accessToken=${accessToken}`, menuConnexion);
+    }
+}
+
+function menuConnexion(infos = null){
+    console.log(infos);
+    var accessToken = getCookie('accessToken');
+    if(infos == null){
+        document.getElementById('login_form').style.display = 'flex';
+    }
+    if(infos[0]["login"] == "admin"){
+        document.getElementById('login_form').style.display = 'none';
+        document.getElementById('bloc_page').style.display = 'flex';
+    }
+}
+
+function createCookie(value){
+    document.cookie = "accessToken = " + value + "; path =/;";
+    reload();
+}
+
+function connect(){
+    var login = document.getElementById("login").value;
+    var passwd = document.getElementById("passwd").value;
+    ajaxRequest('GET', `../php/ajout_accidentsRequest.php/register?login=${login}&passwd=${passwd}`, canConnect);
+}
+
+function canConnect(infos){
+    var login = document.getElementById("login").value;
+    if(infos[0] == true){
+        ajaxRequest('GET', `../php/ajout_accidentsRequest.php/token?login=${login}`, createCookie)
+    }
+}
+
 
 function printtest(infos){
     console.log(infos);
@@ -186,8 +244,8 @@ function afficherDescr_agglo(infos){
 
 function endLoading(){
     console.log("Loaded !")
-    document.getElementById('bloc_page').style.display = 'flex';
     document.getElementById('main_loader').style.display = 'none';
+    cookieForConnect();
 }
 
 
