@@ -3,7 +3,6 @@ mainDiv.style.display = 'none';
 
 function test(data)
 {
-
     // Préparation des données
 	jdata = data.data;
     let tab_lat = jdata.map(row => row[0]);
