@@ -61,8 +61,8 @@ function afficher_prediction(data){
   multi_pred.innerHTML="Multilayer prediction : "+predict_text[2];
   vector_pred.innerHTML="Vector prediction : "+predict_text[3];
 
-  var globalpredict = parseInt(data[0][0])+parseInt(data[1][0])+parseInt(data[2][0])+parseInt(data[3][0]);
-  globalpredict=Math.round(globalpredict/4);
+  var globalpredict = parseInt(data[0][0])*0.58+parseInt(data[1][0])*0.67+parseInt(data[2][0])*0.5+parseInt(data[3][0])*0.6;
+  globalpredict=Math.round(globalpredict/2.35);
   var globalpredict_text;
   if(globalpredict==0){ 
     globalpredict_text='Indemne';}
