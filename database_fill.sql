@@ -8,6 +8,7 @@ DELETE FROM descr_intersection;
 DELETE FROM descr_secu;
 DELETE FROM descr_type_col;
 DELETE FROM gravite;
+DELETE FROM users;
 #------------------------------------------------------------
 # Values : requirements
 #------------------------------------------------------------
@@ -115,4 +116,7 @@ INSERT INTO gravite(id_gravite,nom_gravite) VALUES (1,"Blessé léger");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (2,"Blessé hospitalisé");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (3,"Tué");
 INSERT INTO gravite(id_gravite,nom_gravite) VALUES (4,"NDF");
+
+
+INSERT INTO users(login,passwd) VALUES ("admin", "$2y$10$LE.jqaJn8.CSxwy/8fTw/OIitMJMCO5Yw26rPozRmE5g2aQ8UVL3S");
 
