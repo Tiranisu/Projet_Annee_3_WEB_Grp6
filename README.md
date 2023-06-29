@@ -1,10 +1,10 @@
 # Projet IA Web | Groupe 6
 ## Téo Rortais | Dorian Tarin| Antonin Sabiron |  Mael Grellier Neau
 
-- [http://etu746.projets.isen-ouest.fr/index.html](lien du projet)
-- [https://www.youtube.com/watch?v=Oge9Knbstwo](lien de la vidéo)
-- [https://github.com/Tiranisu/Projet_Annee_3_WEB_Grp6](lien duy github)
-- [https://www.figma.com/file/Ts7qz7aXVcNpwtP1w5Gean/Porjet-WEB-A3?type=design&node-id=0-1&mode=design](lien du Figma)
+- [lien du projet](http://etu746.projets.isen-ouest.fr/index.html)
+- [lien de la vidéo](https://www.youtube.com/watch?v=Oge9Knbstwo)
+- [lien duy github](https://github.com/Tiranisu/Projet_Annee_3_WEB_Grp6)
+- [lien du Figma](https://www.figma.com/file/Ts7qz7aXVcNpwtP1w5Gean/Porjet-WEB-A3?type=design&node-id=0-1&mode=design)
 
 Le MCD de la base de donnée est le suivant :
 
