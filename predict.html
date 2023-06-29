@@ -6,10 +6,63 @@
         <link href="css/F3.css" rel="stylesheet">
         <script src="js/utils.js"></script>
         <script src="js/F3.js"></script>
+        <script src="js/modal.js" defer></script>
+	    <script src="js/kmeans.js"></script>
+	
     </head>
     <body>
         
-
+    <div id="filtres">
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                VILLE
+            </button>
+            <select type="text" id="form_ville">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                ATHMOSPHERE
+            </button>
+            <select name="form_athmo" id="form_athmo" >
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                LUMINOSITE
+            </button>
+            <select name="form_lum" id="form_lum">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                SURFACE
+            </button>
+            <select name="form_route" id="form_route">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                SECURITE
+            </button>
+            <select name="form_secu" id="form_secu">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+        <div class="filtre">
+            <button class="filtre_but" disabled>
+                GRAVITE
+            </button>
+            <select name="form_gravite" id="form_gravite">
+                <option value="0" selected> <b>Aucun filtre</b> </option>
+            </select>
+        </div>
+    </div>
 
     <table class="items">
         <thead>
@@ -85,6 +138,16 @@
         <tbody id="table_body">
         </tbody>
     </table>
+    
+        <button id="predict_button" type="submit" ><span id="">Prédire la gravité d'un accident</span></button>
+        <div id="myModal" class="modal">
 
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p id="modal_text">Some text in the Modal..</p>
+            </div>
+          
+          </div>
     </body>
 </html>
