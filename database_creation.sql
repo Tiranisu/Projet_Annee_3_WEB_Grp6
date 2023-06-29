@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS descr_intersection CASCADE;
 DROP TABLE IF EXISTS descr_agglo CASCADE;
 DROP TABLE IF EXISTS descr_type_col CASCADE;
 DROP TABLE IF EXISTS gravite CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 
 
 #------------------------------------------------------------
@@ -160,4 +161,18 @@ CREATE TABLE accident(
 	,CONSTRAINT accident_descr_cat_veh6_FK FOREIGN KEY (id_descr_cat_veh) REFERENCES descr_cat_veh(id_descr_cat_veh)
 	,CONSTRAINT accident_ville7_FK FOREIGN KEY (code_insee) REFERENCES ville(code_insee)
 	,CONSTRAINT accident_descr_athmo8_FK FOREIGN KEY (id_descr_athmo) REFERENCES descr_athmo(id_descr_athmo)
+)ENGINE=InnoDB;
+
+
+
+#------------------------------------------------------------
+# Table: users
+#------------------------------------------------------------
+
+CREATE TABLE users(
+        id_user               Int  Auto_increment  NOT NULL ,
+        login                 Varchar (50) NOT NULL ,
+        passwd                Varchar (64) NOT NULL ,
+        access_token          Varchar (64) ,
+        CONSTRAINT users_PK PRIMARY KEY (id_user)
 )ENGINE=InnoDB;
